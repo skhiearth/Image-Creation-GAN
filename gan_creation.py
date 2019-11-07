@@ -139,10 +139,10 @@ for epoch in range(25):
         errG.backward()
         optimizerG.step()
         
-        # Saving the real images and the generated images of the minibatch every 100 steps
+        # Saving the real images and the generated images every 100 steps
 
         print('[%d/%d][%d/%d] Loss_D: %.4f Loss_G: %.4f' % (epoch, 25, i, len(dataloader), errD.data[0], errG.data[0]))
         if i % 100 == 0:
-            vutils.save_image(real, '%s/real_samples.png' % "./results", normalize = True)
+            vutils.save_image(real, '%s/real_samples.png' % "./results", normalize = True) # Image created from real samples
             fake = netG(noise)
             vutils.save_image(fake.data, '%s/fake_samples_epoch_%03d.png' % ("./results", epoch), normalize = True)
